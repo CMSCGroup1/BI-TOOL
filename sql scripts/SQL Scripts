@@ -1,2 +1,3 @@
 Shows the scripts used for creating tables and populating data. 
+Table creation scripts also contain scripts for dropping or truncating tables.
 Store any important queries here that will be needed throughout the project.
