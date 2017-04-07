@@ -23,6 +23,11 @@ create table CMSC495.lookup (
 insert into CMSC495.lookup values(1, 'region1_sales_2016', '2016 Region 1 Sales', 2016, 1);
 -- drop table CMSC495.lookup;
 
+ALTER TABLE CMSC495.lookup
+ ADD CONSTRAINT lookup_region_id_fk
+ FOREIGN KEY(region_id)
+ REFERENCES CMSC495.regions(region_id);
+
 create table CMSC495.customers (
 	customer_id	int primary key,
     customer_name varchar(100) not null,
