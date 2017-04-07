@@ -1,4 +1,3 @@
-insert into CMSC495.region1_sales_2016 values(122,72635,15472, '2016-03-08 15:44:00',456.86);
 insert into CMSC495.region1_sales_2016 values(2,234513,113141, '2016-11-29 18:20:00',674.74);
 insert into CMSC495.region1_sales_2016 values(3,234514,113142, '2016-10-06 20:06:00',46.45);
 insert into CMSC495.region1_sales_2016 values(4,234515,113143, '2016-11-07 18:07:00',364.39);
@@ -13,7 +12,7 @@ insert into CMSC495.region1_sales_2016 values(12,234523,113151, '2016-10-08 13:3
 insert into CMSC495.region1_sales_2016 values(13,234524,113152, '2016-10-22 15:58:00',666.28);
 insert into CMSC495.region1_sales_2016 values(14,234525,113153, '2016-02-20 11:05:00',688.07);
 insert into CMSC495.region1_sales_2016 values(15,234526,113154, '2016-11-23 18:08:00',89.06);
-insert into CMSC495.region1_sales_2016 values(16,234527,15472, '2016-01-25 13:34:00',412.40);
+insert into CMSC495.region1_sales_2016 values(16,234527,115472, '2016-01-25 13:34:00',412.40);
 insert into CMSC495.region1_sales_2016 values(17,234528,113141, '2016-03-11 18:08:00',222.67);
 insert into CMSC495.region1_sales_2016 values(18,234529,113142, '2016-03-15 10:24:00',307.94);
 insert into CMSC495.region1_sales_2016 values(19,234530,113143, '2016-10-22 15:25:00',513.88);
@@ -28,7 +27,7 @@ insert into CMSC495.region1_sales_2016 values(27,234538,113151, '2016-11-03 14:4
 insert into CMSC495.region1_sales_2016 values(28,234539,113152, '2016-10-14 20:55:00',595.95);
 insert into CMSC495.region1_sales_2016 values(29,234540,113153, '2016-01-26 09:23:00',872.10);
 insert into CMSC495.region1_sales_2016 values(30,234541,113154, '2016-03-20 14:28:00',492.94);
-insert into CMSC495.region1_sales_2016 values(31,234542,15472, '2016-03-28 10:55:00',779.64);
+insert into CMSC495.region1_sales_2016 values(31,234542,115472, '2016-03-28 10:55:00',779.64);
 insert into CMSC495.region1_sales_2016 values(32,234543,113141, '2016-11-11 13:07:00',64.05);
 insert into CMSC495.region1_sales_2016 values(33,234544,113142, '2016-12-09 11:39:00',73.46);
 insert into CMSC495.region1_sales_2016 values(34,234545,113143, '2016-10-21 12:27:00',383.19);
@@ -43,13 +42,13 @@ insert into CMSC495.region1_sales_2016 values(42,234553,113151, '2016-11-04 19:4
 insert into CMSC495.region1_sales_2016 values(43,234554,113152, '2016-03-19 11:38:00',948.33);
 insert into CMSC495.region1_sales_2016 values(44,234555,113153, '2016-01-13 19:24:00',769.89);
 insert into CMSC495.region1_sales_2016 values(45,234556,113154, '2016-02-03 14:47:00',266.29);
-insert into CMSC495.region1_sales_2016 values(46,234557,15472, '2016-10-18 18:01:00',37.66);
+insert into CMSC495.region1_sales_2016 values(46,234557,115472, '2016-10-18 18:01:00',37.66);
 insert into CMSC495.region1_sales_2016 values(47,234558,113141, '2016-01-17 15:36:00',487.57);
 insert into CMSC495.region1_sales_2016 values(48,234559,113142, '2016-12-20 19:59:00',406.60);
 insert into CMSC495.region1_sales_2016 values(49,234560,113143, '2016-01-17 16:56:00',643.51);
 insert into CMSC495.region1_sales_2016 values(50,234561,113144, '2016-02-02 09:0:00',334.44);
 insert into CMSC495.region1_sales_2016 values(51,234562,113145, '2016-02-16 18:37:00',964.06);
-insert into CMSC495.region1_sales_2016 values(52,234563,113146, '2016-03-18 09:60:00',727.51);
+insert into CMSC495.region1_sales_2016 values(52,234563,113146, '2016-03-18 09:59:00',727.51);
 insert into CMSC495.region1_sales_2016 values(53,234564,113147, '2016-02-18 15:25:00',999.26);
 insert into CMSC495.region1_sales_2016 values(54,234565,113148, '2016-02-18 13:39:00',68.66);
 insert into CMSC495.region1_sales_2016 values(55,234566,113149, '2016-01-23 09:50:00',642.99);
@@ -58,7 +57,7 @@ insert into CMSC495.region1_sales_2016 values(57,234568,113151, '2016-12-27 15:3
 insert into CMSC495.region1_sales_2016 values(58,234569,113152, '2016-12-27 16:35:00',430.60);
 insert into CMSC495.region1_sales_2016 values(59,234570,113153, '2016-01-24 16:59:00',423.13);
 insert into CMSC495.region1_sales_2016 values(60,234571,113154, '2016-03-08 16:11:00',790.64);
-insert into CMSC495.region1_sales_2016 values(61,234572,15472, '2016-02-10 09:51:00',867.13);
+insert into CMSC495.region1_sales_2016 values(61,234572,115472, '2016-02-10 09:51:00',867.13);
 insert into CMSC495.region1_sales_2016 values(62,234573,113141, '2016-01-19 10:07:00',316.63);
 insert into CMSC495.region1_sales_2016 values(63,234574,113142, '2016-10-22 09:40:00',342.85);
 insert into CMSC495.region1_sales_2016 values(64,234575,113143, '2016-11-13 09:52:00',729.38);
@@ -73,7 +72,7 @@ insert into CMSC495.region1_sales_2016 values(72,234583,113151, '2016-11-22 08:5
 insert into CMSC495.region1_sales_2016 values(73,234584,113152, '2016-03-05 09:23:00',866.93);
 insert into CMSC495.region1_sales_2016 values(74,234585,113153, '2016-02-28 17:06:00',703.73);
 insert into CMSC495.region1_sales_2016 values(75,234586,113154, '2016-10-20 10:23:00',626.93);
-insert into CMSC495.region1_sales_2016 values(76,234587,15472, '2016-12-25 14:47:00',496.29);
+insert into CMSC495.region1_sales_2016 values(76,234587,115472, '2016-12-25 14:47:00',496.29);
 insert into CMSC495.region1_sales_2016 values(77,234588,113141, '2016-12-08 17:39:00',89.73);
 insert into CMSC495.region1_sales_2016 values(78,234589,113142, '2016-12-15 12:25:00',865.09);
 insert into CMSC495.region1_sales_2016 values(79,234590,113143, '2016-03-26 15:57:00',988.71);
@@ -88,7 +87,7 @@ insert into CMSC495.region1_sales_2016 values(87,234598,113151, '2016-03-27 15:3
 insert into CMSC495.region1_sales_2016 values(88,234599,113152, '2016-10-11 09:17:00',157.06);
 insert into CMSC495.region1_sales_2016 values(89,234600,113153, '2016-03-02 11:31:00',267.69);
 insert into CMSC495.region1_sales_2016 values(90,234601,113154, '2016-01-07 12:54:00',289.35);
-insert into CMSC495.region1_sales_2016 values(91,234602,15472, '2016-01-11 13:05:00',624.23);
+insert into CMSC495.region1_sales_2016 values(91,234602,115472, '2016-01-11 13:05:00',624.23);
 insert into CMSC495.region1_sales_2016 values(92,234603,113141, '2016-02-18 16:42:00',359.49);
 insert into CMSC495.region1_sales_2016 values(93,234604,113142, '2016-01-09 13:02:00',672.62);
 insert into CMSC495.region1_sales_2016 values(94,234605,113143, '2016-10-18 08:50:00',534.42);
@@ -103,7 +102,7 @@ insert into CMSC495.region1_sales_2016 values(102,234613,113151, '2016-01-08 15:
 insert into CMSC495.region1_sales_2016 values(103,234614,113152, '2016-01-29 10:03:00',806.69);
 insert into CMSC495.region1_sales_2016 values(104,234615,113153, '2016-01-30 14:56:00',74.03);
 insert into CMSC495.region1_sales_2016 values(105,234616,113154, '2016-02-04 13:09:00',992.40);
-insert into CMSC495.region1_sales_2016 values(106,234617,15472, '2016-11-27 12:39:00',997.02);
+insert into CMSC495.region1_sales_2016 values(106,234617,115472, '2016-11-27 12:39:00',997.02);
 insert into CMSC495.region1_sales_2016 values(107,234618,113141, '2016-02-22 20:59:00',449.19);
 insert into CMSC495.region1_sales_2016 values(108,234619,113142, '2016-01-03 12:37:00',512.30);
 insert into CMSC495.region1_sales_2016 values(109,234620,113143, '2016-12-07 08:18:00',845.61);
@@ -119,7 +118,7 @@ insert into CMSC495.region1_sales_2016 values(118,234629,113152, '2016-10-13 17:
 insert into CMSC495.region1_sales_2016 values(119,234630,113153, '2016-11-11 14:38:00',843.03);
 insert into CMSC495.region1_sales_2016 values(120,234631,113154, '2016-03-21 17:06:00',456.43);
 insert into CMSC495.region1_sales_2016 values(121,234632,113154, '2016-01-28 19:18:00',955.65);
-
+insert into CMSC495.region1_sales_2016 values(122,172635,115472, '2016-03-08 15:44:00',456.86);
 
 
 
