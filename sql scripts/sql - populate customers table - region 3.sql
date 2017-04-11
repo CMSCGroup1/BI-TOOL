@@ -156,7 +156,6 @@ insert into CMSC495.customers values(235029, 'Ponce, Ahmed', 'AhmedPonce@gmail.c
 insert into CMSC495.customers values(235030, 'Mcintosh, Wayne', 'WayneMcintosh@gmail.com', '(555)555-1654');
 insert into CMSC495.customers values(235031, 'Walter, Candace', 'CandaceWalter@gmail.com', '(555)555-6375');
 insert into CMSC495.customers values(235032, 'Carey, Edna', 'EdnaCarey@gmail.com', '(555)555-3630');
--- pass 2
 insert into CMSC495.customers values(235033, 'Jordan, Trevor', 'TrevorJordan@gmail.com', '(555)555-5822');
 insert into CMSC495.customers values(235034, 'Austin, Kermit', 'KermitAustin@gmail.com', '(555)555-0985');
 insert into CMSC495.customers values(235035, 'Hodges, Raleigh', 'RaleighHodges@gmail.com', '(555)555-0756');
