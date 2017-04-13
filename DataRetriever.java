@@ -46,7 +46,7 @@ public class DataRetriever {
 	 */
 	public ResultSet getColumnName(String tableName){
 		try {
-			results = sqlStatement.executeQuery("select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = 'customers'");
+			results = sqlStatement.executeQuery("select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = '" + tableName +"'");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
