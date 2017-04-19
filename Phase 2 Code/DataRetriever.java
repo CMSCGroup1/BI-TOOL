@@ -1,6 +1,4 @@
 import java.sql.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 /*
  * This class will establish JDBC connection to the MySQL database. It contains methods that issue SQL statements to retrieve different types of data.
  * Phase 1: Contains methods getTableList(), getColumnName(), getColumnCount(), getTableData(), getAscendingOrder(), getDescendingOrder()
