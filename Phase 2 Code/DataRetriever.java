@@ -17,8 +17,8 @@ public class DataRetriever {
 
 	// Define variables required to establish the JDBC connection. All fields are immutable.
 	private final String dbName = "CMSC495";
-	private final String dbUserName = "administrator";
-	private final String dbPassword = "administrator";
+	private final String dbUserName = "user";
+	private final String dbPassword = "user123";
 	private final String hostname = "cmsc495.cqlogjzddetg.us-east-1.rds.amazonaws.com";
 	private final String port = "3306";
 	private final String jdbcURL = "jdbc:mysql://" + hostname + ":" + port + "/" + dbName;
