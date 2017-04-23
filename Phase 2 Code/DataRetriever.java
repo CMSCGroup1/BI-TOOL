@@ -1,3 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GUI;
+
 import java.sql.*;
 /*
  * This class will establish JDBC connection to the MySQL database. It contains methods that issue SQL statements to retrieve different types of data.
@@ -207,6 +214,19 @@ public class DataRetriever {
 		results = sqlStatement.executeQuery("select sum(amount) as region_sum_amt FROM  " + getRegionalTableName(regionNum) + " where transaction_date>='" + startDate + "' and transaction_date<='" + endDate + "'");
 		results.absolute(1);		//focus on first sql returned row (there is only one row returned)
 		return results.getInt("region_sum_amt");
-	}			
+	}
+        
+        //Get the oldest transaction date in region 1
+        public Date getOldestTransaction() throws SQLException{
+                results = sqlStatement.executeQuery("select min(transaction_date) as EarliestDate from CMSC495.region1_sales_2016");
+                results.absolute(1);
+                return results.getDate("EarliestDate");
+        }
 	
+        //Get the newest transaction date in region 1
+        public Date getNewestTransaction() throws SQLException{
+                results = sqlStatement.executeQuery("select max(transaction_date) as NewestDate from CMSC495.region1_sales_2016");
+                results.absolute(1);
+                return results.getDate("NewestDate");
+        }
 }

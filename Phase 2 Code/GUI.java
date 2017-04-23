@@ -1,3 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GUI;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Locale;
@@ -36,6 +43,16 @@ import javafx.scene.control.ToggleGroup;
  * modified by Thomas Barton
  */
 public class GUI extends Application {
+    
+    /**
+ * 
+ * @author Thomas Barton
+ * This enumerated value is used by the GUI class.
+ */
+public enum DisplayChoice {
+	TABLE, COLUMN,GRAPH,STAT
+}
+
     
     //create the logger
     private static final Logger LOGGER = Logger.getLogger(GUI.class.getName());
@@ -168,12 +185,12 @@ public class GUI extends Application {
                 
                 grid2.add(statBtn, 2, 4);
                 // end radio button declaration. 
-                Label startDate = new Label("Start Date:");
+                Label startDate = new Label("Transaction Start Date:");
                 grid2.add(startDate, 1, 7);
                 DatePicker startDatePicker = new DatePicker();
                 grid2.add(startDatePicker, 1, 8);
                 
-                Label endDate = new Label("End Date:");
+                Label endDate = new Label("Transaction End Date:");
                 grid2.add(endDate, 1, 9);
                 DatePicker endDatePicker2 = new DatePicker();
                 grid2.add(endDatePicker2, 1, 10);
@@ -387,6 +404,113 @@ public class GUI extends Application {
                         case GRAPH:
                         	break;
                         case STAT:
+                            
+                            grid2.setVisible(false);
+                            GridPane grid5 = new GridPane();
+                            grid5.setAlignment(Pos.TOP_LEFT);
+                            grid5.setHgap(15);
+                            grid5.setVgap(15);
+                            
+                            Text sceneTitle4 = new Text("Statistics View: ");
+                            grid5.add(sceneTitle4,1,1);
+                
+                            try {
+                                
+                            Label oldestTrans = new Label("Oldest Transaction Date: " + retriever.getOldestTransaction());
+                            grid5.add(oldestTrans, 1,2);
+                            
+                            } catch (SQLException s) {
+                        			// TODO Auto-generated catch block
+                        			s.printStackTrace();
+                                                Label error1 = new Label("Oldest Transaction Date: Error result set unavailable");
+                                                grid5.add(error1, 1, 2);
+                           }  
+                            
+                            try {
+                                
+                            Label newestTrans = new Label("Newest transaction Date: " + retriever.getNewestTransaction());
+                            grid5.add(newestTrans, 1,3);
+                            
+                            } catch (SQLException s) {
+                        			// TODO Auto-generated catch block
+                        			s.printStackTrace();
+                                                Label error2 = new Label("Newest Transaction Date: Error result set unavailable");
+                                                grid5.add(error2, 1, 3);
+                           } 
+    
+                           try {
+                          
+                           Label totalEmployees = new Label("Total Employees: " + retriever.getTotalEmployeeNum());
+                           grid5.add(totalEmployees, 1,4);
+                           
+                           } catch (SQLException s) {
+                        			// TODO Auto-generated catch block
+                        			s.printStackTrace();
+                                                Label error5 = new Label("Error: Total Employees: result set unavailable");
+                                                grid5.add(error5, 1, 4);
+                           }                      
+                           
+                           try { 
+                           String start = startValue.toString();
+                           String end = endValue.toString();
+                          
+                           Label totalCustomers = new Label("Total Customers: " + Integer.toString(retriever.getTotalCustomerNum(start, end)));
+                           grid5.add(totalCustomers, 1,5);
+                           
+                           } catch (SQLException s) {
+                        			// TODO Auto-generated catch block
+                        			s.printStackTrace();
+                                                Label error6 = new Label("Error: Total Customers: result set unavailable");
+                                                grid5.add(error6, 1, 5);
+                           }                     
+                           
+                            
+                            try { 
+                            String start = startValue.toString();
+                            String end = endValue.toString();
+                            
+                            Label totalAmount = new Label("Total Sales: $" + Integer.toString(retriever.getTotalSales(start, end)));
+                            grid5.add(totalAmount, 1,6);
+                            
+                            } catch (SQLException s) {
+                        			// TODO Auto-generated catch block
+                        			s.printStackTrace();
+                                                Label error7 = new Label("Error: Total Sales: result set unavailable");
+                                                grid5.add(error7, 1, 6);
+                           }   
+                            
+                            try {
+                            int region = 1;    
+                            String start = startValue.toString();
+                            String end = endValue.toString();
+                            
+                            Label avgAmount = new Label("Region 1 Average: $" + Integer.toString(retriever.getRegionalAvgTransactionAmount(region, start, end)));
+                            grid5.add(avgAmount, 1,7);
+                            
+                            } catch (SQLException s) {
+                        			// TODO Auto-generated catch block
+                        			s.printStackTrace();
+                                                Label error8 = new Label("Error: Region 1 Avg: result set unavailable");
+                                                grid5.add(error8, 1, 7);
+                           }  
+                            
+                            Button back = new Button("Back");
+                            grid5.add(back, 1,8);
+                            
+                            Scene scene3 = new Scene(grid5, 500, 400);
+                            primaryStage.setScene(scene3);
+                            primaryStage.show();
+                            
+                            back.setOnAction((ActionEvent i) -> {
+                                
+                               
+                            });
+                            
+                            
+                            
+                            
+                            
+                            
                         	break;
                 }
                 });
