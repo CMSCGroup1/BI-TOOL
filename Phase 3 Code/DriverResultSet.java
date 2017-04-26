@@ -106,7 +106,7 @@ public class DriverResultSet {
 			results = test.getSalesByEmployee();
 			try {
 				while (results.next()){
-					System.out.println(results.getString("employee_name") +"\t" + results.getString("sales_amt"));		//table_name is the column name so leave as is
+					System.out.println(results.getString("employee_name") +"\t" + results.getString("sales_amt"));		
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -121,7 +121,7 @@ public class DriverResultSet {
 			results = test.getSalesByRegion();
 			try {
 				while (results.next()){
-					System.out.println(results.getString("region") +"\t" + results.getString("sales_amt"));		//table_name is the column name so leave as is
+					System.out.println(results.getString("region") +"\t" + results.getString("sales_amt"));		
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -135,7 +135,7 @@ public class DriverResultSet {
 			results = test.getSalesByQuarter();
 			try {
 				while (results.next()){
-					System.out.println(results.getString("quarter") +"\t" + results.getString("quarterly_sales"));		//table_name is the column name so leave as is
+					System.out.println(results.getString("quarter") +"\t" + results.getString("quarterly_sales"));		
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -150,7 +150,7 @@ public class DriverResultSet {
 			results = test.getSalesTransactions();
 			try {
 				while (results.next()){
-					System.out.println(results.getString("date") +"\t" + results.getString("amount"));		//table_name is the column name so leave as is
+					System.out.println(results.getString("date") +"\t" + results.getString("amount"));		
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
