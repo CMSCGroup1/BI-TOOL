@@ -249,4 +249,10 @@ public class DataRetriever {
 		}
 		return results;
 	}
+	//added for pie chart
+	public int getSalesbyRegion(int regionNum, String startDate, String endDate) throws SQLException{
+		results = sqlStatement.executeQuery("select sum(amount) as sales_amt FROM  " + getRegionalTableName(regionNum) + " where transaction_date>='" + startDate + "' and transaction_date<='" + endDate + "'");
+		results.absolute(1);		//focus on first sql returned row (there is only one row returned)
+	return results.getInt("sales_amt");
+}
 }
