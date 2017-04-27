@@ -243,7 +243,7 @@ public class DataRetriever {
 	// Get all sales transactions. Returns transaction date and $ amount
 	public ResultSet getSalesTransactions(){
 		try {
-			results = sqlStatement.executeQuery("select date_format(transaction_date,'%m-%d') as date, amount from region1_sales_2016 union select date_format(transaction_date,'%m-%d') as date, amount from region2_sales_2016 union select date_format(transaction_date,'%m-%d') as date, amount from region3_sales_2016  order by date asc");
+			results = sqlStatement.executeQuery("select date_format(transaction_date,'%m-%d-%Y') as date, amount from region1_sales_2016 union select date_format(transaction_date,'%m-%d-%Y') as date, amount from region2_sales_2016 union select date_format(transaction_date,'%m-%d-%Y') as date, amount from region3_sales_2016  order by date asc");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
