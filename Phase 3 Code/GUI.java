@@ -18,9 +18,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -30,6 +30,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Side;
@@ -40,7 +41,6 @@ import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.ComboBox;
 import javafx.collections.*;
 import javafx.embed.swing.SwingFXUtils;
-
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -49,6 +49,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
 import javax.imageio.ImageIO;
 
 
@@ -71,11 +72,12 @@ public enum DisplayChoice {
 
     
     //create the logger
-    private static final Logger LOGGER = Logger.getLogger(GUI.class.getName());
+    //private static final Logger LOGGER = Logger.getLogger(GUI.class.getName());
     //enumerated value set to be TABLE by default, used by show data button
     private DisplayChoice choice = DisplayChoice.TABLE;
     //used to remember the table that is being selected from in from the columb choice
     private String currentTb = "";
+    private String currentCol = "";
     
     //DataRetriever object
     private static final DataRetriever retriever = new DataRetriever();
@@ -160,9 +162,9 @@ public enum DisplayChoice {
             boolean isValid = authenticate(userTextField.getText(), pwBox.getText());
             
             //Log the user input and if it was valid
-            LOGGER.log(Level.INFO, "username entered: {0}", userTextField.getText());
-            LOGGER.log(Level.INFO, "password entered: {0}", pwBox.getText());
-            LOGGER.log(Level.INFO, "Success: {0}", Boolean.toString(isValid));
+            //LOGGER.log(Level.INFO, "username entered: {0}", userTextField.getText());
+            //LOGGER.log(Level.INFO, "password entered: {0}", pwBox.getText());
+            //LOGGER.log(Level.INFO, "Success: {0}", Boolean.toString(isValid));
             // If valid clear the grid and Welcome the user
             if (isValid) {
        
@@ -261,6 +263,7 @@ public enum DisplayChoice {
                 	
                         switch(choice){ //Each switch choice brings the user to a different view.
                         case TABLE: //default view
+                        	
                         	grid2.setVisible(false);
                             GridPane grid3 = new GridPane();
                             grid3.setAlignment(Pos.TOP_CENTER);
@@ -282,17 +285,19 @@ public enum DisplayChoice {
                     		}
                             
                             TextArea tableBox = new TextArea(tbls); //Main display area
+                            tableBox.setFont(Font.font("Monospaced"));
                             grid3.add(tableBox, 1,2);
                             
                             Button ShowTable = new Button("Show Table"); //Will show the contents of a selected table, default SQL ordering
                             ShowTable.setOnAction((ActionEvent g) -> {
                             	String n = tableBox.getSelectedText();
+                            	sceneTitle2.setText(n + ":");
                             	System.out.println(n);
                             	String ts = "";
                             	ResultSet res3 = retriever.getColumnName(n);
                             	try {
                         			while (res3.next()){
-                        					ts += String.format("%1$-30s", res3.getString("column_name"));	//Separate each column
+                        					ts += String.format("%1$-25s", res3.getString("column_name"));	//Separate each column
                         			}
                         		} catch (SQLException s) {
                         			// TODO Auto-generated catch block
@@ -305,7 +310,7 @@ public enum DisplayChoice {
                         		try {
                         			while (res.next()){
                         				for(int i=1; i <= t; i++){
-                        					ts += String.format("%1$-30s", res.getString(i));	//Separate each column with tab
+                        					ts += String.format("%1$-25s", res.getString(i));	//Separate each column with tab
                         				}
                         				ts += "\n";		// Separate each row with new line
                         			}
@@ -317,6 +322,17 @@ public enum DisplayChoice {
                             });
                             grid3.add(ShowTable,1,4);
                             
+                            Button goBack = new Button("Go to Selection");
+                            goBack.setOnAction((ActionEvent g)->{
+                            	grid3.setVisible(false);
+                            	grid2.setVisible(true);
+                            	currentTb = "";
+                            	currentCol = "";
+                            	tableBox.setText("");
+                            	grid2.setVisible(true);
+                            	grid3.setVisible(false);
+                            });
+                            grid3.add(goBack, 2, 4);
                             Scene scene = new Scene(grid3, 500, 400);
                             primaryStage.setScene(scene);  //redraw
                             primaryStage.show();
@@ -352,6 +368,7 @@ public enum DisplayChoice {
                     			s.printStackTrace();
                     		}
                             TextArea tableBox2 = new TextArea(tbls2); //display area
+                            tableBox2.setFont(Font.font("Monospaced"));
                             grid4.add(tableBox2, 1,3);
                             //buttons declared below due to them making each other visible/invisible
                             Button ShowColumns = new Button("Show Columns"); //will show the columns of selected table
@@ -367,6 +384,7 @@ public enum DisplayChoice {
                               
                                 //currentTb = menu.getItems().toString();//attempting to convert menu items to string
                                 currentTb = tableBox2.getSelectedText(); //requires highlighting
+                                sceneTitle3.setText("Select a Column for " + currentTb);
                             	ResultSet res3 = retriever.getColumnName(currentTb);
                             	String ts3 = "";
                             	try {
@@ -392,12 +410,16 @@ public enum DisplayChoice {
                             
                             ShowAscending.setOnAction((ActionEvent g) -> {
                             	String n2 = currentTb; //gets current table
-                            	String d = tableBox2.getSelectedText(); //gets selected column
+                            	sceneTitle3.setText(currentTb + ":");
+                            	if(currentCol.equals(""))
+                            	{
+                            	currentCol = tableBox2.getSelectedText(); //gets selected column
+                            	}
                             	String ts2 = "";
                             	ResultSet res3 = retriever.getColumnName(currentTb);
                             	try {
                         			while (res3.next()){
-                        					ts2 += res3.getString("column_name") + "\t";	//Separate each column
+                        				ts2 += String.format("%1$-25s", res3.getString("column_name"));	//Separate each column
                         			}
                         		} catch (SQLException s) {
                         			// TODO Auto-generated catch block
@@ -406,12 +428,12 @@ public enum DisplayChoice {
                             	ts2 += "\n";
                             	
                             	int t = retriever.getColumnCount(n2); //the rest retrieves the data in the requested order and displays it.
-                            	ResultSet res2 = retriever.getAscendingOrder(n2, d, startValue.toString(), endValue.toString());
+                            	ResultSet res2 = retriever.getAscendingOrder(n2, currentCol, startValue.toString(), endValue.toString());
                             	
                         		try {
                         			while (res2.next()){
                         				for(int i=1; i <= t; i++){
-                        					ts2 += res2.getString(i) + "\t";	//Separate each column with tab
+                        					ts2 += String.format("%1$-25s", res2.getString(i));	//Separate each column with tab
                         				}
                         				ts2 += "\n";		// Separate each row with new line
                         			}
@@ -425,12 +447,16 @@ public enum DisplayChoice {
                             
                             ShowDescending.setOnAction((ActionEvent g) -> {
                             	String n2 = currentTb; //gets current table
-                            	String d = tableBox2.getSelectedText(); //gets which column to order by
+                            	sceneTitle3.setText(currentTb + ":");
+                            	if(currentCol.equals(""))
+                            	{
+                            	currentCol = tableBox2.getSelectedText(); //gets selected column
+                            	}
                             	String ts2 = "";
                             	ResultSet res3 = retriever.getColumnName(currentTb);
                             	try {
                         			while (res3.next()){
-                        					ts2 += res3.getString("column_name") + "\t";	//Separate each column
+                        				ts2 += String.format("%1$-25s", res3.getString("column_name"));	//Separate each column
                         			}
                         		} catch (SQLException s) {
                         			// TODO Auto-generated catch block
@@ -439,11 +465,11 @@ public enum DisplayChoice {
                             	ts2 += "\n";
                             	
                             	int t = retriever.getColumnCount(n2); //the rest retrieves the data in the requested order and displays it.
-                            	ResultSet res2 = retriever.getDescendingOrder(n2, d, startValue.toString(), endValue.toString());
+                            	ResultSet res2 = retriever.getDescendingOrder(n2, currentCol, startValue.toString(), endValue.toString());
                         		try {
                         			while (res2.next()){
                         				for(int i=1; i <= t; i++){
-                        					ts2 += res2.getString(i) + "\t";	//Separate each column with tab
+                        					ts2 += String.format("%1$-25s", res2.getString(i));	//Separate each column with tab
                         				}
                         				ts2 += "\n";		// Separate each row with new line
                         			}
@@ -454,6 +480,19 @@ public enum DisplayChoice {
                         		tableBox2.setText(ts2);
                             });
                             grid4.add(ShowDescending,1,8);
+                            
+                            Button goBack2 = new Button("Go to Selection");
+                            goBack2.setOnAction((ActionEvent g)->{
+                            	grid4.setVisible(false);
+                            	grid2.setVisible(true);
+                            	currentTb = "";
+                            	currentCol = "";
+                            	ShowColumns.setVisible(true);
+                            	ShowAscending.setVisible(false);
+                            	ShowDescending.setVisible(false);
+                            	tableBox2.setText("");
+                            });
+                            grid4.add(goBack2, 2,8);
                             
                             Scene scene2 = new Scene(grid4, 500, 400);
                             primaryStage.setScene(scene2);
@@ -561,26 +600,26 @@ public enum DisplayChoice {
     public static void main(String[] args) {
         
         //print working directory for testing
-        System.out.println("Working Directory = " +
-              System.getProperty("user.dir"));
+        //System.out.println("Working Directory = " +
+             // System.getProperty("user.dir"));
         
         Locale.setDefault(Locale.US);//set locale for date widget
-        FileHandler fh;//create a file handler to contain logs
+        //FileHandler fh;//create a file handler to contain logs
         
         // write the log messages to a file
-        try {
-            fh = new FileHandler("/Users/jayherford/Desktop/logs/logfile.log");//path of the log file
-            LOGGER.addHandler(fh);//create a handler for the static variable logger
-            SimpleFormatter formatter = new SimpleFormatter();//create a formatter object
-            fh.setFormatter(formatter);
+        //try {
+         //   fh = new FileHandler("/Users/jayherford/Desktop/logs/logfile.log");//path of the log file
+         //   LOGGER.addHandler(fh);//create a handler for the static variable logger
+         //   SimpleFormatter formatter = new SimpleFormatter();//create a formatter object
+         //   fh.setFormatter(formatter);
 
-            LOGGER.info("My Log is Working");//test statement that should be the first message in the log
+         //   LOGGER.info("My Log is Working");//test statement that should be the first message in the log
             
-        }
+       // }
         // print error message if there is one
-        catch (IOException io) {
-            System.out.println("File IO Exception" + io.getMessage());
-        }
+        //catch (IOException io) {
+        //    System.out.println("File IO Exception" + io.getMessage());
+       // }
         launch(args);
     }
 
